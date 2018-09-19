@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using DefaultProject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DefaultProject.Models;
 
 namespace DefaultProject
 {
@@ -37,14 +38,19 @@ namespace DefaultProject
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            
+
+        services.AddDbContext<ExerciseContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("fatima")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-        }
+    }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
