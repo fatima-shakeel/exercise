@@ -16,8 +16,21 @@ namespace DefaultProject.Controllers
             _ORM = ORM;
         }
 
+        [HttpGet]
+        public IActionResult RegisterStudent()
+        {
+          
+            return View();
+        }
 
-        
+        [HttpPost]
+        public IActionResult RegisterStudent(Student S)
+        {
+            _ORM.Student.Add(S);
+            _ORM.SaveChanges();
+            ViewBag.Message = "REGISTRATION DONE SUCCESSFULLY";
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
