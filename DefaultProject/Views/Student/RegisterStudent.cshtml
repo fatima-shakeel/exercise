@@ -6,10 +6,14 @@
 @{
     if (ViewBag.Message != null)
     {
-        <h4 class="alert alert-success"><span class="glyphicon glyphicon-success"></span>ViewBag.Message</h4>
+        <h4 class="alert alert-success"><span class="glyphicon glyphicon-success"></span>@ViewBag.Message</h4>
     } }
 
 <hr />
+
+    <a href="/student/studentslist" class="btn btn-success">ViewStudents</a>
+   <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="RegisterStudent">
@@ -44,16 +48,7 @@
                 <input asp-for="Gpa" class="form-control" />
                 <span asp-validation-for="Gpa" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cv" class="control-label"></label>
-                <input asp-for="Cv" class="form-control" />
-                <span asp-validation-for="Cv" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Subject" class="control-label"></label>
                 <input asp-for="Subject" class="form-control" />

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Student>
+
+
+<br />
+
+<a href="/Student/RegisterStudent" class="btn btn-warning">Register New Student</a>
+<br />
+
+
+
+
+<h1>Total Students: @Model.Count()</h1>
+
+<table id="ourtable" name="ourtable" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>RollNo</td>
+            <td>Email</td>
+            <td>Department</td>
+            <td>Class</td>
+            <td>Gpa </td>
+            <td>Subject</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Student S in Model)
+        {
+        <tr>
+            <td>
+                @S.Id
+            </td>
+            <td>
+                @S.Name
+            </td>
+            <td>
+                @S.RollNo
+            </td>
+            <td>
+                @S.Email
+            </td>
+            <td>
+                @S.Department
+            </td>
+            <td>
+                @S.Class
+            </td>
+
+            <td>
+                @S.Gpa
+            </td>
+            <td>
+            @S.Subject
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+

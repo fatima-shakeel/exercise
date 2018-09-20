@@ -31,6 +31,14 @@ namespace DefaultProject.Controllers
             ViewBag.Message = "REGISTRATION DONE SUCCESSFULLY";
             return View();
         }
+        
+        [HttpGet]
+       public IActionResult StudentsList()
+        {
+            IList<Student> StudentsList = _ORM.Student.ToList<Student>();
+            
+            return View(StudentsList);
+        }
         public IActionResult Index()
         {
             return View();
