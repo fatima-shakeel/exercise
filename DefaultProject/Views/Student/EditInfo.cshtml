@@ -1,0 +1,45 @@
+﻿@model Student
+
+
+
+<h1>Please fill the details to update the model</h1>
+
+<form method="post" action="/Student/EditInfo">
+    
+    <p>Id: @Model.Id</p>
+    @Html.HiddenFor(m => m.Id)
+    <br />
+    <label>Name:</label>
+    <input id="Name" name="Name" value="@Model.Name" class="form-group" />
+    <br />
+    <br />
+    <label>RollNo:</label>
+    <input id="RollNo" name="RollNo" value="@Model.RollNo" class="form-group" />
+    <br />
+    <br />
+    <label>Email:</label>
+    <input id="Email" name="Email" value="@Model.Email" class="form-group" />
+    <br />
+    <br />
+    <label>Department:</label>
+    <input id="Department" name="Department" value="@Model.Department" class="form-group" />
+    <br />
+    <br />
+    <label>Class:</label>
+    <input id="Class" name="Class" value="@Model.Class" class="form-group" />
+    <br />
+    <br />
+    <label>Gpa:</label>
+    <input id="Gpa" name="Gpa" value="@Model.Gpa" class="form-group" />
+    <br />
+    <br />
+    <label>Subject:</label>
+    <input id="Subject" name="Subject" value="@Model.Subject"  class="form-group"/>
+    <br />
+    <br />
+
+
+
+    <input type="submit" value="Save" />
+</form>
+

@@ -47,6 +47,22 @@ namespace DefaultProject.Controllers
             
             return View(StudentsList);
         }
+
+        [HttpGet]
+        public IActionResult EditInfo(int Id)
+        {
+            Student S = _ORM.Student.Where(m => m.Id == Id).FirstOrDefault<Student>();
+            return View(S);
+        }
+
+        [HttpPost]
+        public IActionResult EditInfo(Student S)
+        {
+            _ORM.Student.Update(S);
+            _ORM.SaveChanges();
+            
+            return RedirectToAction("StudentsList");
+        }
         public IActionResult Index()
         {
             return View();
