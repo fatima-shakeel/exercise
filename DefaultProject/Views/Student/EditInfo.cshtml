@@ -5,7 +5,7 @@
 <h1>Please fill the details to update the model</h1>
 
 <form method="post" action="/Student/EditInfo">
-    
+
     <p>Id: @Model.Id</p>
     @Html.HiddenFor(m => m.Id)
     <br />
@@ -34,9 +34,12 @@
     <br />
     <br />
     <label>Subject:</label>
-    <input id="Subject" name="Subject" value="@Model.Subject"  class="form-group"/>
+    <input id="Subject" name="Subject" value="@Model.Subject" class="form-group" />
     <br />
     <br />
+
+    <label>CV:</label>
+    <input id="CV" name="CV" value="@Model.CV" type="file" class="form-group" />
 
 
 

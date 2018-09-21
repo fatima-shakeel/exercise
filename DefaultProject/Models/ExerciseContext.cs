@@ -33,7 +33,10 @@ namespace DefaultProject.Models
             {
                 entity.Property(e => e.Class).HasMaxLength(50);
 
-               
+                entity.Property(e => e.CV)
+                    .HasColumnName("CV")
+                    .HasMaxLength(250);
+
                 entity.Property(e => e.Department).HasMaxLength(50);
 
                 entity.Property(e => e.Email).HasMaxLength(50);

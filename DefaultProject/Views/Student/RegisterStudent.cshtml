@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="RegisterStudent">
+        <form asp-action="RegisterStudent" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -48,11 +48,16 @@
                 <input asp-for="Gpa" class="form-control" />
                 <span asp-validation-for="Gpa" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Subject" class="control-label"></label>
                 <input asp-for="Subject" class="form-control" />
                 <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="file" id="Resume" name="Resume" />
+                <span id="CVError"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
