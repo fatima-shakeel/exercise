@@ -31,38 +31,51 @@
 
         @foreach (Student S in Model)
         {
-        <tr>
-            <td>
-                @S.Id
-            </td>
-            <td>
-                @S.Name
-            </td>
-            <td>
-                @S.RollNo
-            </td>
-            <td>
-                @S.Email
-            </td>
-            <td>
-                @S.Department
-            </td>
-            <td>
-                @S.Class
-            </td>
+            <tr>
+                <td>
+                    @S.Id
+                </td>
+                <td>
+                    @S.Name
+                </td>
+                <td>
+                    @S.RollNo
+                </td>
+                <td>
+                    @S.Email
+                </td>
+                <td>
+                    @S.Department
+                </td>
+                <td>
+                    @S.Class
+                </td>
 
-            <td>
-                @S.Gpa
-            </td>
-            <td>
-            @S.Subject
-            </td>
+                <td>
+                    @S.Gpa
+                </td>
+                <td>
+                    @S.Subject
+                </td>
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
 
+@section abc
+    {
+    <script>
+
+        $(function () {
+
+            $('#ourtable').DataTable();
+            $('#ik').draggable();
+            $('#nb').draggable();
+            $('#dob').datepicker();
+        });
+
+    </script>
 
 
 
