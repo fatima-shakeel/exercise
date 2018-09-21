@@ -55,6 +55,7 @@ namespace DefaultProject.Controllers
             return View(S);
         }
 
+
         [HttpPost]
         public IActionResult EditInfo(Student S)
         {
@@ -63,6 +64,17 @@ namespace DefaultProject.Controllers
             
             return RedirectToAction("StudentsList");
         }
+
+        public IActionResult DeleteStudent(Student S)
+        {
+            _ORM.Student.Remove(S);
+            _ORM.SaveChanges();
+            ViewBag.Message = "DELETED SUCCESSFULLY";
+            return RedirectToAction("StudentsList");
+
+           
+        }
+
         public IActionResult Index()
         {
             return View();
