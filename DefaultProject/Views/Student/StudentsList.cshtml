@@ -31,34 +31,38 @@
 
         @foreach (Student S in Model)
         {
-            <tr>
-                <td>
-                    @S.Id
-                </td>
-                <td>
-                    @S.Name
-                </td>
-                <td>
-                    @S.RollNo
-                </td>
-                <td>
-                    @S.Email
-                </td>
-                <td>
-                    @S.Department
-                </td>
-                <td>
-                    @S.Class
-                </td>
+        <tr>
+            <td>
+                @S.Id
+            </td>
+            <td>
+                @S.Name
+            </td>
+            <td>
+                @S.RollNo
+            </td>
+            <td>
+                @S.Email
+            </td>
+            <td>
+                @S.Department
+            </td>
+            <td>
+                @S.Class
+            </td>
 
-                <td>
-                    @S.Gpa
-                </td>
-                <td>
-                    @S.Subject
-                </td>
+            <td>
+                @S.Gpa
+            </td>
+            <td>
+                @S.Subject
+            </td>
+            <td>
+                <a href="/Student/StudentInfo?Id=@S.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> View Info</a>
+                
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
@@ -70,12 +74,12 @@
         $(function () {
 
             $('#ourtable').DataTable();
-            $('#ik').draggable();
             $('#nb').draggable();
             $('#dob').datepicker();
         });
 
     </script>
+        }
 
 
 
