@@ -31,6 +31,14 @@ namespace DefaultProject.Controllers
             ViewBag.Message = "REGISTRATION DONE SUCCESSFULLY";
             return View();
         }
+
+        public IActionResult StudentInfo(int Id)
+        {
+            Student S = _ORM.Student.Where(m => m.Id == Id).FirstOrDefault<Student>();
+
+
+            return View(S);
+        }
         
         [HttpGet]
        public IActionResult StudentsList()

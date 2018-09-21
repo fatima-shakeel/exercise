@@ -1,0 +1,36 @@
+﻿@model Student
+
+
+<h1> <b>Detail of @Model.Name</b></h1>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>RollNo</td>
+            <td>Email</td>
+            <td>Department</td>
+            <td>Class</td>
+            <td>Gpa </td>
+            <td>Subject</td>
+            
+        </tr>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.RollNo</td>
+            <td>@Model.Email</td>
+            <td>@Model.Department</td>
+            <td>@Model.Class</td>
+            <td>@Model.Gpa </td>
+            <td>@Model.Subject</td>
+            
+        </tr>
+        
+    </table>
+}
+
+<a href="/student/StudentsList" class="btn btn-success"><span class="glyphicon glyphicon-apple"></span>View StudentsList</a>
+
