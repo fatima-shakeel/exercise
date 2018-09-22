@@ -128,7 +128,14 @@ namespace DefaultProject.Controllers
             return View(StudentsList);
         }
 
-        
+
+        [HttpPost]
+        public IActionResult AllStudents(string SearchByName, string SearchByRollNo,string SearchByDepartment)
+        {
+
+            IList<Student> AllStudents = _ORM.Student.Where(m => m.Name.Contains(SearchByName) || m.RollNo.Contains(SearchByName) || m.Department.Contains(SearchByName)).ToList<Student>();
+            return View(AllStudents);
+        }
 
         [HttpGet]
         public IActionResult EditInfo(int Id)

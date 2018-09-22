@@ -7,11 +7,20 @@
 <br />
 
 
+<form method="post" action="/student/studentslist">
+    
+    <input type="text" id="SearchByName" name="SearchByName"  placeholder="SearchByName"/>
+    <input type="text" id="SearchByRollNo" name="SearchByRollNo" placeholder="SearchByRollNo"/>
+    <input type="text" id="SearchByDepartment" name="SearchByDepartment" placeholder="SearchByDepartment" />
+    <input type="submit" value="Search" />
+</form>
+
+
 
 
 <h1>Total Students: @Model.Count()</h1>
 
-<table id="ourtable" name="ourtable" class="table table-bordered table-responsive>
+<table id="ourtable" name="ourtable" class="table table-striped table-responsive">
 
     <thead>
         <tr>
@@ -32,41 +41,41 @@
 
         @foreach (Student S in Model)
         {
-        <tr>
-            <td>
-                @S.Id
-            </td>
-            <td>
-                @S.Name
-            </td>
-            <td>
-                @S.RollNo
-            </td>
-            <td>
-                @S.Email
-            </td>
-            <td>
-                @S.Department
-            </td>
-            <td>
-                @S.Class
-            </td>
+            <tr>
+                <td>
+                    @S.Id
+                </td>
+                <td>
+                    @S.Name
+                </td>
+                <td>
+                    @S.RollNo
+                </td>
+                <td>
+                    @S.Email
+                </td>
+                <td>
+                    @S.Department
+                </td>
+                <td>
+                    @S.Class
+                </td>
 
-            <td>
-                @S.Gpa
-            </td>
-            <td>
-                @S.Subject
-            </td>
-            <td>
-                @S.CV
-            </td>
-            <td>
-                <a href="/Student/StudentInfo?Id=@S.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> View Info</a>
-                <a href="/Student/DeleteStudent?Id=@S.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-            </td>
+                <td>
+                    @S.Gpa
+                </td>
+                <td>
+                    @S.Subject
+                </td>
+                <td>
+                    @S.CV
+                </td>
+                <td>
+                    <a href="/Student/StudentInfo?Id=@S.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> View Info</a>
+                    <a href="/Student/DeleteStudent?Id=@S.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </td>
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
@@ -83,7 +92,7 @@
         });
 
     </script>
-        }
+}
 
 
 
