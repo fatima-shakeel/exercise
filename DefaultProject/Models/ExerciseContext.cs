@@ -74,9 +74,7 @@ namespace DefaultProject.Models
                     .HasColumnName("Phone_No")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.ProfilePicture)
-                    .HasColumnName("Profile_Picture")
-                    .HasMaxLength(250);
+                
             });
         }
     }

@@ -1,0 +1,52 @@
+﻿@model Student
+
+
+<form action="SendEmail" method="Post" enctype="multipart/form-data">
+
+
+    <div>
+        <label for="Name" class="col-md-3">Name:</label>
+
+        <div class="col-md-9">
+            <input type="text" id="Name" name="Name" />
+            <span id="NameError"></span>
+        </div>
+
+    </div>
+
+
+
+    <div>
+        <label for="Email" class="col-md-3">Email:</label>
+
+        <div class="col-md-9">
+            <input type="text" id="Email" name="Email" />
+            <span id="EmailError"></span>
+        </div>
+
+    </div>
+
+
+
+
+    
+
+    <div>
+        <label for="Resume" class="col-md-3">Resume</label>
+
+        <div class="col-md-9">
+            <input type="file" id="Resume" name="Resume" />
+            <span id="CVError"></span>
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+
+
+    <input type="submit" value="send" />
+
+
+</form>
