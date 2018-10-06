@@ -31,19 +31,33 @@ namespace DefaultProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterStudent(Student S,IFormFile Resume)
+        public IActionResult RegisterStudent(Student S,IFormFile ProfilePicture,IFormFile Resume)
         {
+            string wwwRoothPath = _ENV.WebRootPath;
+            string FTPPathForPPs = wwwRoothPath + "/WebData/PPs";
 
-            string wwwRootPath = _ENV.WebRootPath;
+            string UniqueName = Guid.NewGuid().ToString();
+            string FileExtension = Path.GetExtension(ProfilePicture.FileName);
 
-           
-            string CVPath = "/WebData/CVs/" + Guid.NewGuid().ToString() + Path.GetExtension(Resume.FileName);
-            FileStream CVS = new FileStream(wwwRootPath + CVPath, FileMode.Create);
-            Resume.CopyTo(CVS);
-            CVS.Close();
-            S.CV = CVPath;
+            FileStream FS = new FileStream(FTPPathForPPs+UniqueName+FileExtension,FileMode.Create);
+
+            ProfilePicture.CopyTo(FS);
+            FS.Close();
 
 
+            S.ProfilePicture = "/WebData/PPs/" + UniqueName + FileExtension;
+
+
+            string FTPPathForCVs = wwwRoothPath + "/WebData/CVs";
+            string UniqueNames = Guid.NewGuid().ToString();
+            string FileExtensions = Path.GetExtension(Resume.FileName);
+            FileStream Fs = new FileStream(FTPPathForPPs + UniqueNames + FileExtensions, FileMode.Create);
+
+            Resume.CopyTo(Fs);
+            Fs.Close();
+
+
+            S.ProfilePicture = "/WebData/PPs/" + UniqueName + FileExtension;
 
             _ORM.Student.Add(S);
             _ORM.SaveChanges();
@@ -59,9 +73,22 @@ namespace DefaultProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendEmail(Student S,IFormFile Resume)
+        public IActionResult SendEmail(Student S,IFormFile ProfilePicture,IFormFile Resume)
         {
+            
             string wwwRootPath = _ENV.WebRootPath;
+            string FTPPathForPPs = wwwRootPath + "/WebData/PPs";
+
+            string UniqueNames = Guid.NewGuid().ToString();
+            string FileExtensions = Path.GetExtension(ProfilePicture.FileName);
+
+            FileStream Fs = new FileStream(wwwRootPath + FTPPathForPPs+UniqueNames, FileMode.Create);
+            ProfilePicture.CopyTo(Fs);
+            Fs.Close();
+
+
+            S.ProfilePicture = "/WebData/PPs/" + UniqueNames + FileExtensions;
+
 
             string CVPath = "/WebData/CVs/" + Guid.NewGuid().ToString() + Path.GetExtension(Resume.FileName);
             FileStream CVS = new FileStream(wwwRootPath + CVPath, FileMode.Create);
@@ -75,9 +102,9 @@ namespace DefaultProject.Controllers
             // Email object
 
             MailMessage Email = new MailMessage();
-            Email.From = new MailAddress("fatimashakeel24@yahoo.com");
+            Email.From = new MailAddress("dazzlinglove98@gmail.com");
             Email.To.Add(new MailAddress(S.Email));
-            Email.CC.Add(new MailAddress("XXXX@XXXX.com"));
+            Email.CC.Add(new MailAddress("dazzlinglove98@gmail.com"));
             Email.Subject = "Welcome to ABC";
             Email.Body = "Dear " + S.Name + ",<br><br>" +
                 "Thanks for registering with ABC, We are glad to have you in our system." +
@@ -85,7 +112,10 @@ namespace DefaultProject.Controllers
                 "<b>Regards</b>,<br>ABC Team";
             Email.IsBodyHtml = true;
 
-           
+            if (!string.IsNullOrEmpty(S.ProfilePicture))
+            {
+                Email.Attachments.Add(new Attachment(wwwRootPath + S.CV));
+            }
             if (!string.IsNullOrEmpty(S.CV))
             {
                 Email.Attachments.Add(new Attachment(wwwRootPath + S.CV));
@@ -96,7 +126,7 @@ namespace DefaultProject.Controllers
             oSMTP.Host = "smtp.gmail.com";
             oSMTP.Port = 587; //465 //25
             oSMTP.EnableSsl = true;
-            oSMTP.Credentials = new System.Net.NetworkCredential("XXXXX@gmail.com", "XXXXX");
+            oSMTP.Credentials = new System.Net.NetworkCredential("dazzlinglove98@gmail.com", "fatimashakeel");
 
             try
             {

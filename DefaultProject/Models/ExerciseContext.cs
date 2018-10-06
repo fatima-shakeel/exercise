@@ -63,6 +63,7 @@ namespace DefaultProject.Models
                 entity.Property(e => e.Cv)
                     .HasColumnName("CV")
                     .HasMaxLength(250);
+                entity.Property(e => e.ProfilePicture).HasMaxLength(250);
 
                 entity.Property(e => e.Department).HasMaxLength(50);
 
